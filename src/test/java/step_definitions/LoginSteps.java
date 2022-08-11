@@ -13,7 +13,7 @@ public class LoginSteps {
 	    System.out.println("Indside step - User is on the login page");
 	}
 
-	@When("user enters valid username and password")
+	@When("the user enters valid username and password")
 	public void user_enters_valid_username_and_password() {
 	    // Write code here that turns the phrase above into concrete actions
 	    System.out.println("Indside step - user enters valid username and password");
@@ -25,7 +25,7 @@ public class LoginSteps {
 	    System.out.println("Indside step - User clicks the login button");
 	}
 
-	@Then("user is navigated to the inventory page")
+	@Then("user is redirected to the inventory page")
 	public void user_is_navigated_to_the_inventory_page() {
 	    // Write code here that turns the phrase above into concrete actions
 	    System.out.println("Indside step - User is redirected to the inventory page");

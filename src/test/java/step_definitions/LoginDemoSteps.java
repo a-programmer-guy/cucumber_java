@@ -19,8 +19,6 @@ public class LoginDemoSteps {
 	
 	public static WebDriver driver;
 	public static String url = "https://www.saucedemo.com";
-	public static String username = "standard_user";
-	public static String password = "secret_sauce";
 	
 	@Given("browser is open")
 	public void browser_is_open() {
@@ -40,9 +38,14 @@ public class LoginDemoSteps {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-button")));
 	}
-
-	@When("user enters username and password")
-	public void user_enters_username_and_password() {
+	/*
+	 * Use regular expressions for matching all to replace username and password
+	 * fields - when getting the information from the data tables in the -
+	 * logindemo.feature file - add the hat at the beginning and dollar sign to the -
+	 * end of the annotation string. Pass in the username and password to the method.
+	 */
+	@When("^user enters (.*)and (.*)$")
+	public void user_enters_username_and_password(String username, String password) {
 		System.out.println("Inside step: user enters username and password");
 		driver.findElement(By.id("user-name")).sendKeys(username);
 		driver.findElement(By.id("password")).sendKeys(password);

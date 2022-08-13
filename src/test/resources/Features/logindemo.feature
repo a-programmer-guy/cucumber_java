@@ -1,4 +1,4 @@
-#Author: ctrl-kay AKA a-programmer-guy
+#Author: ctrl-kay
 #Feature: test login on the website https://www.saucedemo.com/
 @smokefeature
 Feature: Test login functionality

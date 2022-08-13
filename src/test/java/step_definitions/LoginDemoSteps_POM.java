@@ -14,19 +14,23 @@
 //import io.cucumber.java.en.Then;
 //import io.cucumber.java.en.When;
 //import io.github.bonigarcia.wdm.WebDriverManager;
+//import pages.LoginPage;
 //
-//public class LoginDemoSteps {
+//public class LoginDemoSteps_POM {
 //	
 //	public static WebDriver driver;
 //	public static String url = "https://www.saucedemo.com";
 //	
+//	// Instantiate LoginPage object at global level and pass the WebDriver into it
+//	LoginPage loginPage;
+//	
 //	@Given("browser is open")
 //	public void browser_is_open() {
-//		
-//		System.out.println("Inside step: browser is open");
+//		System.out.println("... Using LoginDemoSteps_POM ...");
+//		System.out.println(" Inside step: browser is open");
 //		// Use WebDriverManager to set up chrome driver
-//		WebDriverManager.chromedriver().setup();
-//		driver = new ChromeDriver();
+//		 WebDriverManager.chromedriver().setup();
+//		 driver = new ChromeDriver();
 //	}
 //
 //	@And("user is on login page")
@@ -34,32 +38,40 @@
 //		System.out.println("Inside step: user is on login page");
 //		driver.get(url);
 //		driver.manage().window().maximize();
-//		// Wait and allow webpage to load before moving to next step - wait for login button
 //		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 //		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-button")));
 //	}
+//	
 //	/*
 //	 * Use regular expressions for matching all to replace username and password
 //	 * fields - when getting the information from the data tables in the -
 //	 * logindemo.feature file - add the hat at the beginning and dollar sign to the -
 //	 * end of the annotation string. Pass in the username and password to the method.
+//	 * Instantiate a new instance of the LoginPage object and pass the driver to it to access
+//	 * the methods that have been defined in the LoginPage class.
 //	 */
+//	
 //	@When("^user enters (.*)and (.*)$")
-//	public void user_enters_username_and_password(String username, String password) {
+//	public void user_enters_username_and_password(String userName, String password) throws InterruptedException {
 //		System.out.println("Inside step: user enters username and password");
-//		driver.findElement(By.id("user-name")).sendKeys(username);
-//		driver.findElement(By.id("password")).sendKeys(password);
+//		/*
+//		 * By creating the LoginPage class as part of the POM architecture the previous lines
+//		 * of code can be removed and replaced with the methods from the LoginPage Class
+//		 */
+//		loginPage = new LoginPage(driver);
+//		loginPage.enterUserName(userName);
+//		loginPage.enterPassword(password);
 //	}
 //
 //	@And("clicks login button")
 //	public void clicks_login_button() {
 //		System.out.println("Inside step: clicks login button");
-//		driver.findElement(By.xpath("//*[@id=\"login-button\"]")).click();	
+//		loginPage.clickLogin();
 //	}
-//	
 //
 //	@Then("user is redirected to inventory page")
 //	public void user_is_redirected_to_inventory_page() {
+//		
 //		System.out.println("Inside step: user is redirected to inventory page");
 //		String expectedUrl = "https://www.saucedemo.com/inventory.html";
 //		String actualUrl = driver.getCurrentUrl();

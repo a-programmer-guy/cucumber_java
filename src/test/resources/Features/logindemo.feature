@@ -1,9 +1,7 @@
 #Author: ctrl-kay
 #Feature: test login on the website https://www.saucedemo.com/
-@smokefeature
 Feature: Test login functionality
 
-  @smoketest
   Scenario Outline: Check login is successful with valid credentials
     Given browser is open
     And user is on login page
